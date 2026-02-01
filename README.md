@@ -129,8 +129,8 @@ Dengan **real-time exchange rate** fetching dari API eksternal.
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/dompet-keluarga.git
-cd dompet-keluarga
+git clone https://github.com/yourusername/dompet-keluarga-pub.git
+cd dompet-keluarga-pub
 ```
 
 ### 2. Install Dependencies
@@ -139,18 +139,33 @@ npm install
 ```
 
 ### 3. Setup Firebase Configuration
-Edit `src/App.jsx` dan pastikan konfigurasi Firebase sudah benar:
-```javascript
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-storage-bucket.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
-};
+
+**PENTING**: Jangan pernah commit kredensial Firebase ke repository!
+
+1. Copy file environment template:
+```bash
+cp .env.example .env
 ```
+
+2. Dapatkan konfigurasi Firebase dari [Firebase Console](https://console.firebase.google.com/):
+   - Buka project Firebase Anda
+   - Pergi ke Project Settings > General
+   - Scroll ke "Your apps" > SDK setup and configuration
+   - Copy semua nilai konfigurasi
+
+3. Edit file `.env` dan isi dengan kredensial Firebase Anda:
+```env
+VITE_FIREBASE_API_KEY=your_api_key_here
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+VITE_APP_ID=your_app_id
+```
+
+**Note**: File `.env` sudah ada di `.gitignore` dan tidak akan ter-commit ke repository.
 
 ### 4. Setup Firestore Rules
 Pastikan Firestore rules di Firebase Console sudah dikonfigurasi untuk keamanan:
@@ -257,11 +272,13 @@ UI Rendering & User Interaction
 
 ## 🛡️ Security Considerations
 
-1. **Never commit Firebase credentials** - Gunakan environment variables
-2. **Firestore Rules** - Implementasikan security rules yang ketat
-3. **HTTPS Only** - Deploy hanya dengan HTTPS
-4. **Data Encryption** - Sensitive data dienkripsi di Firestore
-5. **Auth Validation** - Server-side validation di backend rules
+1. **Environment Variables** - Firebase credentials disimpan di file `.env` (tidak ter-commit)
+2. **Never commit credentials** - File `.env` sudah ada di `.gitignore`
+3. **Firestore Rules** - Implementasikan security rules yang ketat (lihat `firestore.rules`)
+4. **HTTPS Only** - Deploy hanya dengan HTTPS
+5. **Data Encryption** - Sensitive data dienkripsi di Firestore
+6. **Auth Validation** - Server-side validation di backend rules
+7. **API Keys Protection** - Gunakan Firebase App Check untuk production
 
 ## 🐛 Troubleshooting
 

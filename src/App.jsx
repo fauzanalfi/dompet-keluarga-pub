@@ -23,19 +23,19 @@ import {
 
 // --- 1. KONFIGURASI FIREBASE ---
 const firebaseConfig = {
-  apiKey: "AIzaSyAC5_LnGPcZtLyFB091FaUfEu6_AjJsLbQ",
-  authDomain: "dompet-keluarga-prod.firebaseapp.com",
-  projectId: "dompet-keluarga-prod",
-  storageBucket: "dompet-keluarga-prod.firebasestorage.app",
-  messagingSenderId: "68401529984",
-  appId: "1:68401529984:web:0749e9b641771b3064d265",
-  measurementId: "G-NKY1EL3HXN"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const appId = 'dompet-keluarga-prod'; 
+const appId = import.meta.env.VITE_APP_ID; 
 
 // --- 2. UTILITY FUNCTIONS ---
 const formatCurrency = (amount) => {
