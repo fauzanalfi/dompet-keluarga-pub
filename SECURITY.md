@@ -8,17 +8,7 @@
 - ✅ **Protected**: File `.env` sudah ada di `.gitignore`
 
 ### 2. Firebase Configuration
-**BEFORE** (❌ Hard-coded credentials):
-```javascript
-const firebaseConfig = {
-  apiKey: "AIzaSyAC5_LnGPcZtLyFB091FaUfEu6_AjJsLbQ",
-  authDomain: "dompet-keluarga-prod.firebaseapp.com",
-  projectId: "dompet-keluarga-prod",
-  // ... other sensitive data
-};
-```
 
-**AFTER** (✅ Environment variables):
 ```javascript
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
