@@ -28,7 +28,7 @@ npm install
 
 1. Pergi ke [Firebase Console](https://console.firebase.google.com/)
 2. Klik "Add project" atau "Create a project"
-3. Masukkan nama project (contoh: `dompet-keluarga-prod`)
+3. Masukkan nama project (contoh: `dompet-keluarga-pub`)
 4. Aktifkan Google Analytics (opsional)
 5. Tunggu project selesai dibuat
 
